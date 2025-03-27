@@ -1,0 +1,15 @@
+name: Run Script on Push from web_hook
+
+on:
+  repository_dispatch:
+    types: [run-script]  # Evento personalizado disparado do repositório web_hook
+
+jobs:
+  run-script:
+    runs-on: self-hosted  # Seu runner auto-hospedado onde o script será executado
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Executar o script
+        run: ./run.sh  # Executando o script 'run.sh'
